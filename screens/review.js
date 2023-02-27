@@ -2,10 +2,32 @@ import React from "react";
 import { View, Text, StyleSheet , Image, TextInput, Button} from "react-native";
 import { globalStyles } from "../styles/global";
 import { useState } from "react";
-import setReviews from './home';
+import {reviews, setReviews} from './home';
 
 
 export default function ReviewPage(){
+
+  const [movieName, setMovieName] = useState('');
+  const [rate, setRate] = useState('');
+  const [review, setReview] = useState('');
+
+  const addReview = () => {
+ 
+    const newReview = {
+      title: movieName,
+      rate: parseFloat(rate),
+      body: review,
+      key: Math.random().toString() 
+    };
+
+    setReviews([...reviews, newReview]);
+
+ 
+    setMovieName('');
+    setRate('');
+    setReview('');
+  };
+
 
 
   return (
@@ -19,13 +41,19 @@ export default function ReviewPage(){
       <TextInput
         style={styles.input}
         placeholder="Enter the movie name"
+        value={movieName}
+        onChangeText={(text) => setMovieName(text)}
      
       />
 
 <Text style={styles.label}>Your Rate:</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter the rate"
+        placeholder="Your Rate (out of 5)"
+        value={rate}
+        onChangeText={(text) => setRate(text)}
+        keyboardType="numeric"
+
      
       />
 
@@ -34,10 +62,13 @@ export default function ReviewPage(){
       <TextInput
         style={styles.input}
         placeholder="What do you think about it?"
-     
+        value={review}
+        onChangeText={(text) => setReview(text)}
+        multiline={true}
+        numberOfLines={5}
       />
       
-      <Button title="Add Review" color={"red"}  />
+      <Button title="Add Review" color={"red"} onPress={addReview} />
     </View>
   );
 

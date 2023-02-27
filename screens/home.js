@@ -5,18 +5,25 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
-export default function HomePage(){
+
+export default function HomePage(props){
     const [reviews, setReviews] = useState([
-        {title:"Shutter island", rate: 5, body:"Shutter Island is a cinematic masterpiece that delves deep into the psychological complexities of the human mind. From the mesmerizing cinematography to the haunting soundtrack, every element of this film is meticulously crafted to transport the viewer to a world of mystery and intrigue.        ", key:"1"},
-        {title:"Manchester by the sea", rate: 4.5, body:"Manchester by the Sea is a cinematic masterpiece, a true tour de force of melodrama and existential ennui. With its gritty New England setting and unflinching portrayal of grief, this film is a veritable feast for the senses. Casey Affleck's brooding performance as a haunted handyman is nothing short of breathtaking, while the understated yet evocative soundtrack adds an extra layer of emotional depth", key:"2"},
-        {title:"7. Koğuştaki Mucize", rate: 4, body:"Koğuştaki Mucize is a cinematic masterpiece that will leave you questioning the very fabric of your being. The artistry of the director is evident in every frame, and the performances of the actors will leave you breathless. It is a poignant meditation on the human condition, and a triumphant celebration of the indomitable spirit of the human soul. This film will move you, it will challenge you, and it will leave you forever changed. In short, 7. Koğuştaki Mucize is a work of sublime genius that simply must be seen to be believed.", key:"3"},
+        {title:"Shutter island", rate: 5, body:"Shutter Island is a cinematic masterpiece", key:"1"},
+        {title:"Manchester by the sea", rate: 4.5, body:"Manchester by the Sea is a cinematic masterpiece", key:"2"},
+        {title:"7. Koğuştaki Mucize", rate: 4, body:"Koğuştaki Mucize is a cinematic masterpiece", key:"3"},
         
     ])
 
-
+  
     const deleteReview = (key) => {
         setReviews(prevReviews => prevReviews.filter(review => review.key !== key));
       }
+
+      
+
+      
+
+      
 
 return(
     <View style={globalStyles.container} >
@@ -61,6 +68,7 @@ return(
 }
 
 
+
 const styles = StyleSheet.create({
     movieBox:{
     backgroundColor: 'pink',
@@ -77,4 +85,5 @@ const styles = StyleSheet.create({
             paddingTop: 5,
             paddingHorizontal:5,
     }
-})
+});
+
